@@ -1,0 +1,21 @@
+{
+  "name": "redchamps/module-customer-cart-tab-fix",
+  "description": "It will fix Magento 2 issue reported here https://github.com/magento/magento2/issues/26437.",
+  "type": "magento2-module",
+  "version": "1.0.0",
+  "require": {
+    "magento/module-customer": "*"
+  },
+  "license": [
+    "OSL-3.0",
+    "AFL-3.0"
+  ],
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "RedChamps\\CustomerCartTabFix\\": ""
+    }
+  }
+}
