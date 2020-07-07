@@ -26,4 +26,19 @@ class Cart extends \Magento\Customer\Block\Adminhtml\Edit\Tab\Cart
 
         return Extended::_prepareCollection();
     }
+
+    protected function getQuote()
+    {
+        if (null === $this->quote) {
+            $customerId = $this->getCustomerId();
+            $storeIds = $this->_storeManager->getWebsite($this->getWebsiteId())->getStoreIds();
+
+            try {
+                $this->quote = $this->quoteFactory->create()->setSharedStoreIds($storeIds)->loadByCustomer($customerId);
+            } catch (NoSuchEntityException $e) {
+                $this->quote = $this->quoteFactory->create()->setSharedStoreIds($storeIds);
+            }
+        }
+        return $this->quote;
+    }
 }
